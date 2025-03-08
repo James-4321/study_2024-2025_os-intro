@@ -1,0 +1,118 @@
+<p>#Лаборатория 4</p>
+<p>#Кусоро Майова Джеймс</p>
+<p>#1032244581</p>
+<h2 id="цель-работы">Цель работы</h2>
+<p>Получение навыков правильной работы с репозиториями git.</p>
+<p>##Теоретические сведения</p>
+<p>Рабочий процесс Gitflow Рабочий процесс Gitflow Workflow. Будем
+описывать его с использованием пакета git-flow.</p>
+<h3 id="описание-задачи"><strong>Описание задачи</strong></h3>
+<p>Я установил git flow из галереи хранилища copr</p>
+<figure>
+<img src="images/Screenshot1.png" alt="Screenshot 1" />
+<figcaption aria-hidden="true">Screenshot 1</figcaption>
+</figure>
+<p>Установка Node.js Программное обеспечение для семантического
+версионирования и общих коммитов основано на Node.js</p>
+<figure>
+<img src="images/Screenshot2.png" alt="Screenshot 2" />
+<figcaption aria-hidden="true">Screenshot 2</figcaption>
+</figure>
+<p>Настройка Node.js:Для работы с Node.js добавьте директорию с
+исполняемыми файлами, установленную в .yarnPATH</p>
+<figure>
+<img src="images/Screenshot3.png" alt="Screenshot 3" />
+<figcaption aria-hidden="true">Screenshot 3</figcaption>
+</figure>
+<p>commitizen:Эта программа используется для форматирования коммитов.
+pnpm add -g commitizen standard-changelog: Эта программа используется
+для помощи в создании logs.pnpm add -g standard-changelog</p>
+<figure>
+<img src="images/Screenshot4.png" alt="Screenshot 4" />
+<figcaption aria-hidden="true">Screenshot 4</figcaption>
+</figure>
+<h4 id="практический-сценарий-использования-git"><em>Практический
+сценарий использования git</em></h4>
+<ol type="1">
+<li>Подключение репозитория к github Создайте репозиторий на GitHub.
+Например, назовем его .git-extended. Сделайте первый коммит и загрузите
+его на github</li>
+</ol>
+<figure>
+<img src="images/Screenshot5.png" alt="SCreenshot 5" />
+<figcaption aria-hidden="true">SCreenshot 5</figcaption>
+</figure>
+<ol start="2" type="1">
+<li>Общая конфигурация коммитов Конфигурация для Node.Мы будем
+использовать инициализацию PNPM</li>
+</ol>
+<figure>
+<img src="images/Screenshot6.png" alt="SCreenshot 6" />
+<figcaption aria-hidden="true">SCreenshot 6</figcaption>
+</figure>
+<ol start="3" type="1">
+<li>Конфигурация git-flow</li>
+</ol>
+<p>Инициализируем git-flow</p>
+<pre><code>git flow init</code></pre>
+<p>Префикс для ярлыков установим в .v</p>
+<p>Проверьте, что Вы на ветке :develop</p>
+<pre><code>git branch</code></pre>
+<p>Загрузите весь репозиторий в хранилище:</p>
+<pre><code>git push --all</code></pre>
+<p>Установите внешнюю ветку как вышестоящую для этой ветки:</p>
+<pre><code>git branch --set-upstream-to=origin/develop develop</code></pre>
+<p>Создадим релиз с версией 1.0.0</p>
+<pre><code>git flow release start 1.0.0</code></pre>
+<p>Создадим журнал изменений</p>
+<pre><code>standard-changelog --first-release</code></pre>
+<p>Добавим журнал изменений в индекс</p>
+<pre><code>git add CHANGELOG.md
+git commit -am &#39;chore(site): add changelog&#39;</code></pre>
+<p>Зальём релизную ветку в основную ветку</p>
+<pre><code>git flow release finish 1.0.0</code></pre>
+<p>Отправим данные на github</p>
+<pre><code>git push --all
+git push --tags</code></pre>
+<p>Создадим релиз на github. Для этого будем использовать утилиты работы
+с github:</p>
+<pre><code>gh release create v1.0.0 -F CHANGELOG.md</code></pre>
+<figure>
+<img src="images/Screenshot7.png" alt="Screenshot 7" />
+<figcaption aria-hidden="true">Screenshot 7</figcaption>
+</figure>
+<figure>
+<img src="images/Screenshot8.png" alt="SCReenshot 8" />
+<figcaption aria-hidden="true">SCReenshot 8</figcaption>
+</figure>
+<h5 id="работа-с-репозиторием-git"><strong>Работа с репозиторием
+git</strong></h5>
+<ol type="1">
+<li>Разработка новой функциональности Создадим ветку для новой
+функциональности:</li>
+</ol>
+<pre><code>git flow feature start feature_branch</code></pre>
+<p>Далее, продолжаем работу c git как обычно. По окончании разработки
+новой функциональности следующим шагом следует объединить ветку c
+:feature_branchdevelop</p>
+<pre><code>git flow feature finish feature_branch</code></pre>
+<ol start="2" type="1">
+<li>Создание релиза git-flow Создадим релиз с версией :1.2.3</li>
+</ol>
+<pre><code>git flow release start 1.2.3</code></pre>
+<p>Обновите номер версии в файле . Установите её в .package.json1.2.3
+Создадим журнал изменений</p>
+<pre><code>standard-changelog</code></pre>
+<p>Добавим журнал изменений в индекс</p>
+<pre><code>git add CHANGELOG.md
+git commit -am &#39;chore(site): update changelog&#39;</code></pre>
+<p>Зальём релизную ветку в основную ветку</p>
+<pre><code>git flow release finish 1.2.3</code></pre>
+<p>Отправим данные на github</p>
+<pre><code>git push --all
+git push --tags</code></pre>
+<p>Создадим релиз на github с комментарием из журнала изменений:</p>
+<pre><code>gh release create v1.2.3 -F CHANGELOG.md</code></pre>
+<p><strong>Выход:</strong>В этой лабораторной работе я изучал, как
+выполнить работу для тестового репозитория и конвертировать рабочий
+репозиторий в репозиторий с git-flow и обычными коммитами.</p>
