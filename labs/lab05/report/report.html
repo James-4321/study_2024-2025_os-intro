@@ -1,0 +1,118 @@
+<h1 id="лаборатору-отчет-no5"><strong>Лаборатору Отчет No5</strong></h1>
+<p><strong>Кусоро Майова Джеймс</strong></p>
+<p><strong>НК-Абд-01-24</strong></p>
+<h2 id="цель-работы">Цель работы</h2>
+<p><strong>Цель данной лабораторной работы — научиться пользоваться
+менеджером паролей и Chezmoi</strong></p>
+<h3 id="описание-задачи"><strong>Описание задачи</strong></h3>
+<ol type="1">
+<li><strong>сначала я установил gopass и pass с помощью
+команды</strong></li>
+</ol>
+<pre><code>dnf install pass pass-otp
+dnf install gopass</code></pre>
+<p><img src="images/Screenshot1.png" alt="Screenshot1" /> <img
+src="images/Screenshot2.png" alt="Screenshot2" /></p>
+<ol start="2" type="1">
+<li><strong>Я просмотрел список имеющихся у меня ключей gpg с помощью
+команды</strong></li>
+</ol>
+<pre><code>gpg --list-secret-keys</code></pre>
+<figure>
+<img src="images/Screenshot3.png" alt="Screenshot3" />
+<figcaption aria-hidden="true">Screenshot3</figcaption>
+</figure>
+<ol start="3" type="1">
+<li><strong>Я инициализировал хранилище и синхронизировался с git, а
+также установил адрес размещенного хранилища с помощью
+команд</strong></li>
+</ol>
+<pre><code>pass init omotole47@gmail.com
+pass git init
+pass git remote add origin git@github.com:Ushie47/study_2024-2025_os-intro.git</code></pre>
+<figure>
+<img src="images/Screenshot4.png" alt="Screenshot4" />
+<figcaption aria-hidden="true">Screenshot4</figcaption>
+</figure>
+<p><strong>Для синхронизации выполняется следующая команда:</strong></p>
+<pre><code>pass git pull
+pass git push</code></pre>
+<figure>
+<img src="images/Screenshot5.png" alt="Screenshot5" />
+<figcaption aria-hidden="true">Screenshot5</figcaption>
+</figure>
+<ol start="4" type="1">
+<li><strong>Если изменения вносятся непосредственно в файловую систему,
+вам необходимо вручную зафиксировать и загрузить
+изменения:</strong></li>
+</ol>
+<pre><code>cd ~/.password-store/
+git add .
+git commit -am &#39;edit manually&#39;
+git push</code></pre>
+<figure>
+<img src="images/Screenshot7.png" alt="Screenshot6" />
+<figcaption aria-hidden="true">Screenshot6</figcaption>
+</figure>
+<h1 id="настройка-интерфейса-с-помощью-браузера">Настройка интерфейса с
+помощью браузера</h1>
+<p><strong>Сначала мне нужно скачать плагин BrowserPass в браузере,
+затем скачать интерфейс для взаимодействия с браузером в терминале с
+помощью команды</strong></p>
+<pre><code>dnf copr enable maximbaz/browserpass
+dnf install browserpass</code></pre>
+<figure>
+<img src="images/Screenshot8.png" alt="Screenshot7" />
+<figcaption aria-hidden="true">Screenshot7</figcaption>
+</figure>
+<h2 id="сохранение-пароля">Сохранение пароля</h2>
+<p><strong>Нам нужно создать пароль, а затем отобразить пароль для
+конкретного файла в терминале с помощью команды</strong></p>
+<pre><code>pass insert [study]/[github]
+pass [study]/[github]</code></pre>
+<figure>
+<img src="images/Screenshot9.png" alt="Screenshot8" />
+<figcaption aria-hidden="true">Screenshot8</figcaption>
+</figure>
+<h3 id="управление-конфигурационными-файлами">Управление
+конфигурационными файлами</h3>
+<p><strong>Я установил дополнительное программное
+обеспечение</strong></p>
+<figure>
+<img src="images/Screenshot10.png" alt="Screenshot9" />
+<figcaption aria-hidden="true">Screenshot9</figcaption>
+</figure>
+<p><strong>Установка бинарного файла. Скрипт определяет архитектуру
+процессора и операционную систему и загружает необходимый файл с помощью
+wget</strong></p>
+<pre><code>sh -c &quot;$(wget -qO- chezmoi.io/get)&quot;</code></pre>
+<p><strong>Я создал свой собственный репозиторий для конфигурационных
+файлов на основе шаблона:</strong></p>
+<pre><code>gh repo create dotfiles --template=&quot;yamadharma/dotfiles-template&quot; --private</code></pre>
+<p><strong>Я инициализировал его с помощью своего github</strong></p>
+<pre><code>chezmoi init git@github.com:Ushie47/dotfiles.git</code></pre>
+<figure>
+<img src="images/Screenshot11.png" alt="Screenshot10" />
+<figcaption aria-hidden="true">Screenshot10</figcaption>
+</figure>
+<p><strong>Извлекать изменения из репозитория и применять их с помощью
+одной команды</strong></p>
+<pre><code>chezmoi update</code></pre>
+<p><strong>Чтобы извлечь последние изменения из репозитория и увидеть,
+какие изменения не применяются фактически</strong></p>
+<pre><code>chezmoi git pull -- --autostash --rebase &amp;&amp; chezmoi diff</code></pre>
+<p><strong>Чтобы применить изменения, мы используем команду</strong></p>
+<pre><code>chezmoi apply</code></pre>
+<p><strong>Вы можете автоматически фиксировать и отправлять изменения в
+исходный каталог в репозитории.По умолчанию эта функция отключена.Чтобы
+включить его, добавьте в файл конфигурации
+следующее:~/.config/chezmoi/chezmoi.toml</strong>
+<code>[git]     autoCommit = true     autoPush = true</code> <img
+src="images/Screenshot12.png" alt="Screenshot11" /></p>
+<figure>
+<img src="images/Screenshot13.png" alt="Screenshot12" />
+<figcaption aria-hidden="true">Screenshot12</figcaption>
+</figure>
+<p><strong>Вывод: из этой лабораторной работы я узнал, как использовать
+chezmoi для создания файла конфигурации и как использовать менеджер
+паролей</strong></p>
