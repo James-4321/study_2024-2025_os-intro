@@ -1,0 +1,366 @@
+<h2 id="front-matter">Front matter</h2>
+<p>title: “Отчёт по лабораторной работе №7” subtitle: “Анализ файловой
+системы Linux. Команды для работы с файлами и каталогами” author:
+“Кусоро Майова Джеймс”</p>
+<h2 id="generic-otions">Generic otions</h2>
+<p>lang: ru-RU toc-title: “Содержание”</p>
+<h2 id="bibliography">Bibliography</h2>
+<p>bibliography: bib/cite.bib csl:
+pandoc/csl/gost-r-7-0-5-2008-numeric.csl</p>
+<h2 id="pdf-output-format">Pdf output format</h2>
+toc: true # Table of contents toc-depth: 2 lof: true # List of figures
+fontsize: 12pt linestretch: 1.5 papersize: a4 documentclass: scrreprt ##
+I18n polyglossia polyglossia-lang: name: russian options: -
+spelling=modern - babelshorthands=true polyglossia-otherlangs: name:
+english ## I18n babel babel-lang: russian babel-otherlangs: english ##
+Fonts mainfont: PT Serif romanfont: PT Serif sansfont: PT Sans monofont:
+PT Mono mainfontoptions: Ligatures=TeX romanfontoptions: Ligatures=TeX
+sansfontoptions: Ligatures=TeX,Scale=MatchLowercase monofontoptions:
+Scale=MatchLowercase,Scale=0.9 ## Biblatex biblatex: true biblio-style:
+“gost-numeric” biblatexoptions: - parentracker=true - backend=biber -
+hyperref=auto - language=auto - autolang=other* - citestyle=gost-numeric
+## Pandoc-crossref LaTeX customization figureTitle: “Рис.” listingTitle:
+“Листинг” lofTitle: “Список иллюстраций” lolTitle: “Листинги” ## Misc
+options indent: true header-includes: -
+<ul>
+<li><h1 id="keep-figures-where-there-are-in-the-text">keep figures where
+there are in the text</h1>
+<ul>
+<li><h2 id="keep-figures-where-there-are-in-the-text-1"> # keep figures
+where there are in the text</h2></li>
+</ul></li>
+</ul>
+<h1 id="цель-работы">Цель работы</h1>
+<p>Ознакомление с файловой системой Linux, её структурой, именами и
+содержанием каталогов. Приобретение практических навыков по применению
+команд для работы с файлами и каталогами, по управлению процессами (и
+работами), по проверке использования диска и обслуживанию файловой
+системы.</p>
+<h1 id="задание">Задание</h1>
+<ol type="1">
+<li>Команды для работы с файлами и каталогами</li>
+<li>Анализ файловой системы Linux.</li>
+</ol>
+<h1 id="выполнение-лабораторной-работы">Выполнение лабораторной
+работы</h1>
+<h2 id="команды-для-работы-с-файлами-и-каталогами">Команды для работы с
+файлами и каталогами</h2>
+<p>Создаю файл abc1 с помощью touch и копирую его с новыми именами april
+и may исползуя cp:</p>
+<figure id="fig:001">
+<img src="images/image1.png" style="width:70.0%"
+alt="Создание файлов abc1, april и may" />
+<figcaption aria-hidden="true">Создание файлов abc1, april и
+may</figcaption>
+</figure>
+<p>Создаю каталог monthly и копирую april и may в нем исползуя
+cp. Проверяю с ls:</p>
+<figure id="fig:002">
+<img src="images/image2.png" style="width:70.0%"
+alt="Создание monthly" />
+<figcaption aria-hidden="true">Создание monthly</figcaption>
+</figure>
+<p>В каталоге monthly копирую файл may с именем june исползуя cp:</p>
+<figure id="fig:003">
+<img src="images/image3.png" style="width:70.0%"
+alt="копирование файла may" />
+<figcaption aria-hidden="true">копирование файла may</figcaption>
+</figure>
+<p>Копирую каталог monthly в каталог monthly.00 с помощью опции cp
+-r:</p>
+<figure id="fig:004">
+<img src="images/image4.png" style="width:70.0%"
+alt="копирование каталога monthly" />
+<figcaption aria-hidden="true">копирование каталога monthly</figcaption>
+</figure>
+<p>Копирую каталог monthly.00 в каталог /tmp:</p>
+<figure id="fig:005">
+<img src="images/image5.png" style="width:70.0%"
+alt="копирование каталога monthly.00" />
+<figcaption aria-hidden="true">копирование каталога
+monthly.00</figcaption>
+</figure>
+<p>Изменяю название файла april на july в домашнем каталоге и перемещаю
+файл july в каталог monthly.00:</p>
+<figure id="fig:006">
+<img src="images/image6.png" style="width:70.0%"
+alt="Перемещение файла july" />
+<figcaption aria-hidden="true">Перемещение файла july</figcaption>
+</figure>
+<p>Переименовываю каталог monthly.00 в monthly.01. Перемещаю каталог
+monthly.01 в каталог reports:</p>
+<figure id="fig:007">
+<img src="images/image7.png" style="width:70.0%"
+alt="Перемещение и переименование каталога monthly.00" />
+<figcaption aria-hidden="true">Перемещение и переименование каталога
+monthly.00</figcaption>
+</figure>
+<p>Переименовываю каталог reports/monthly.01 в reports/monthly:</p>
+<figure id="fig:008">
+<img src="images/image8.png" style="width:70.0%"
+alt="переименование каталога reports/monthly.01" />
+<figcaption aria-hidden="true">переименование каталога
+reports/monthly.01</figcaption>
+</figure>
+<p>Копирую файл /usr/include/sys/io.h в домашний каталог и назову его
+equipment:</p>
+<figure id="fig:009">
+<img src="images/image9.png" style="width:70.0%"
+alt="Создание equipment" />
+<figcaption aria-hidden="true">Создание equipment</figcaption>
+</figure>
+<p>В домашнем каталоге создаю директорию ~/ski.plases с помощью
+mkdir:</p>
+<figure id="fig:0010">
+<img src="images/image10.png" style="width:70.0%"
+alt="Проверка создания ski.plases" />
+<figcaption aria-hidden="true">Проверка создания ski.plases</figcaption>
+</figure>
+<p>Перемещаю файл equipment в каталог ~/ski.plases:</p>
+<figure id="fig:0011">
+<img src="images/image11.png" style="width:70.0%"
+alt="Перемещение файла equipment" />
+<figcaption aria-hidden="true">Перемещение файла equipment</figcaption>
+</figure>
+<p>Переименую файл ~/ski.plases/equipment в ~/ski.plases/equiplist и
+копирую abc1 в каталог ~/ski.plases, назову его equiplist2:</p>
+<figure id="fig:0012">
+<img src="images/image12.png" style="width:70.0%"
+alt="Переименование файла /equipment" />
+<figcaption aria-hidden="true">Переименование файла
+/equipment</figcaption>
+</figure>
+<p>Создаю каталог с именем equipment в каталоге ~/ski.plases и перемещаю
+файлы ~/ski.plases/equiplist и equiplist2 в каталог
+~/ski.plases/equipment:</p>
+<figure id="fig:0013">
+<img src="images/image14.png" style="width:70.0%"
+alt="Создание каталога equipment, перемещение файлов" />
+<figcaption aria-hidden="true">Создание каталога equipment, перемещение
+файлов</figcaption>
+</figure>
+<p>Создаю и перемещаю каталог ~/newdir в каталог ~/ski.plases и назову
+его plans:</p>
+<figure id="fig:0014">
+<img src="images/image15.png" style="width:70.0%"
+alt="Создание и перемещение каталога ~/newdir" />
+<figcaption aria-hidden="true">Создание и перемещение каталога
+~/newdir</figcaption>
+</figure>
+<p>Создаю каталог australia. Удаляю права на исполнение для группы (g-x)
+и владелца(u-x):</p>
+<figure id="fig:0015">
+<img src="images/image16.png" style="width:70.0%"
+alt="Создание australia" />
+<figcaption aria-hidden="true">Создание australia</figcaption>
+</figure>
+<figure id="fig:0016">
+<img src="images/image17.png" style="width:70.0%"
+alt="Удаление права" />
+<figcaption aria-hidden="true">Удаление права</figcaption>
+</figure>
+<p>Изменяю права доступа к каталогу play и проверяю:</p>
+<figure id="fig:0017">
+<img src="images/image18.png" style="width:70.0%"
+alt="Измениеие прав" />
+<figcaption aria-hidden="true">Измениеие прав</figcaption>
+</figure>
+<figure id="fig:0018">
+<img src="images/image19.png" style="width:70.0%"
+alt="Проверка изменений" />
+<figcaption aria-hidden="true">Проверка изменений</figcaption>
+</figure>
+<p>Изменяю права доступа к файлу feathers и проверяю:</p>
+<figure id="fig:0019">
+<img src="images/image20.png" style="width:70.0%"
+alt="Измениеие прав к файлу feathers" />
+<figcaption aria-hidden="true">Измениеие прав к файлу
+feathers</figcaption>
+</figure>
+<p>Смотрю содержимое файла /etc/passwd:</p>
+<figure id="fig:0020">
+<img src="images/image21.png" style="width:70.0%" alt="команда cat" />
+<figcaption aria-hidden="true">команда cat</figcaption>
+</figure>
+<p>Копирую файл ~/feathers в файл ~/file.old, перемещаю файл ~/file.old
+в каталог ~/play и копирую каталог ~/play в каталог ~/fun:</p>
+<figure id="fig:0021">
+<img src="images/image22.png" style="width:70.0%"
+alt="Перемещение и копирование файлов и каталогов" />
+<figcaption aria-hidden="true">Перемещение и копирование файлов и
+каталогов</figcaption>
+</figure>
+<p>Перемещаю каталог ~/fun в каталог ~/play и назову его games:</p>
+<figure id="fig:0022">
+<img src="images/image23.png" style="width:70.0%"
+alt="Перемещение каталога fun" />
+<figcaption aria-hidden="true">Перемещение каталога fun</figcaption>
+</figure>
+<p>Лишаю пользователя файла ~/feathers права на чтение:</p>
+<figure id="fig:0023">
+<img src="images/image24.png" style="width:70.0%"
+alt="Лишение права на читение" />
+<figcaption aria-hidden="true">Лишение права на читение</figcaption>
+</figure>
+<p>Когда я попытаюсь просмотреть файл ~/feathers командой cat, система
+запрешает мне:</p>
+<figure id="fig:0024">
+<img src="images/image25.png" style="width:70.0%"
+alt="Посмотра файла feathers" />
+<figcaption aria-hidden="true">Посмотра файла feathers</figcaption>
+</figure>
+<p>Лишаю владельца каталога ~/play права на выполнение. Когда я попробую
+перейти в этот же каталог, система запрещает мне:</p>
+<figure id="fig:0025">
+<img src="images/image26.png" style="width:70.0%"
+alt="Лишение права на выполнение" />
+<figcaption aria-hidden="true">Лишение права на выполнение</figcaption>
+</figure>
+<p>Даю владельцу каталога ~/play право на выполнение:</p>
+<figure id="fig:0026">
+<img src="images/image27.png" style="width:70.0%"
+alt="Название рисунка" />
+<figcaption aria-hidden="true">Название рисунка</figcaption>
+</figure>
+<p>С помощью man прочитаю по следующим командам: mount — утилита
+командной строки в UNIX-подобных операционных системах. Применяется для
+монтирования файловых систем.</p>
+<figure id="fig:0027">
+<img src="images/image28.png" style="width:70.0%" alt="mount" />
+<figcaption aria-hidden="true">mount</figcaption>
+</figure>
+<p>fsck (проверка файловой системы) - это утилита командной строки,
+которая позволяет выполнять проверки согласованности и интерактивное
+исправление в одной или нескольких файловых системах Linux. Он
+использует программы, специфичные для типа файловой системы, которую он
+проверяет.</p>
+<figure id="fig:0028">
+<img src="images/image29.png" style="width:70.0%" alt="fsck" />
+<figcaption aria-hidden="true">fsck</figcaption>
+</figure>
+<p>mkfs используется для создания файловой системы Linux на некотором
+устройстве, обычно в разделе жёсткого диска. В качестве аргумента
+filesys для файловой системы может выступать или название устройства</p>
+<figure id="fig:0029">
+<img src="images/image30.png" style="width:70.0%" alt="mkfs" />
+<figcaption aria-hidden="true">mkfs</figcaption>
+</figure>
+<p>Команда Kill посылает указанный сигнал указанному процессу. Если не
+указано ни одного сигнала, посылается сигнал SIGTERM. Сигнал SIGTERМ
+завершает лишь те процессы, которые не обрабатывают его приход. Для
+других процессов может быть необходимым послать сигнал SIGKILL,
+поскольку этот сигнал перехватить невозможно.</p>
+<figure id="fig:0030">
+<img src="images/image31.png" style="width:70.0%" alt="Kill" />
+<figcaption aria-hidden="true">Kill</figcaption>
+</figure>
+<h1 id="выводы">Выводы</h1>
+<p>При выполнении данной лабораторной работы я ознакомилась с файловой
+системой Linux, её структурой, именами и содержанием каталогов.
+Приобрела практические навыки по применению команд для работы с файлами
+и каталогами, по управлению процессами (и работами), по проверке
+использования диска и обслуживанию файловой системы.</p>
+<h2 id="ответы-на-контрольные-вопросы">Ответы на контрольные
+вопросы</h2>
+<ol type="1">
+<li>Ext2, Ext3, Ext4 или Extended Filesystem - это стандартная файловая
+система для Linux. Она была разработана еще для Minix. Она самая
+стабильная из всех существующих, кодовая база изменяется очень редко и
+эта файловая система содержит больше всего функций. Версия ext2 была
+разработана уже именно для Linux и получила много улучшений. В 2001 году
+вышла ext3, которая добавила еще больше стабильности благодаря
+использованию журналирования. В 2006 была выпущена версия ext4, которая
+используется во всех дистрибутивах Linux до сегодняшнего дня. В ней было
+внесено много улучшений, в том числе увеличен максимальный размер
+раздела до одного экзабайта.</li>
+</ol>
+<p>Btrfs или B-Tree File System - это совершенно новая файловая система,
+которая сосредоточена на отказоустойчивости, легкости администрирования
+и восстановления данных. Файловая система объединяет в себе очень много
+новых интересных возможностей, таких как размещение на нескольких
+разделах, поддержка подтомов, изменение размера не лету, создание
+мгновенных снимков, а также высокая производительность. Но многими
+пользователями файловая система Btrfs считается нестабильной. Тем не
+менее, она уже используется как файловая система по умолчанию в OpenSUSE
+и SUSE Linux.</p>
+<ol start="2" type="1">
+<li>/ — root каталог. Содержит в себе всю иерархию системы;</li>
+</ol>
+<p>/bin — здесь находятся двоичные исполняемые файлы. Основные общие
+команды, хранящиеся отдельно от других программ в системе (прим.: pwd,
+ls, cat, ps);</p>
+<p>/boot — тут расположены файлы, используемые для загрузки системы
+(образ initrd, ядро vmlinuz);</p>
+<p>/dev — в данной директории располагаются файлы устройств (драйверов).
+С помощью этих файлов можно взаимодействовать с устройствами. К примеру,
+если это жесткий диск, можно подключить его к файловой системе. В файл
+принтера же можно написать напрямую и отправить задание на печать;</p>
+<p>/etc — в этой директории находятся файлы конфигураций программ. Эти
+файлы позволяют настраивать системы, сервисы, скрипты системных
+демонов;</p>
+<p>/home — каталог, аналогичный каталогу Users в Windows. Содержит
+домашние каталоги учетных записей пользователей (кроме root). При
+создании нового пользователя здесь создается одноименный каталог с
+аналогичным именем и хранит личные файлы этого пользователя;</p>
+<p>/lib — содержит системные библиотеки, с которыми работают программы и
+модули ядра;</p>
+<p>/lost+found — содержит файлы, восстановленные после сбоя работы
+системы. Система проведет проверку после сбоя и найденные файлы можно
+будет посмотреть в данном каталоге;</p>
+<p>/media — точка монтирования внешних носителей. Например, когда вы
+вставляете диск в дисковод, он будет автоматически смонтирован в
+директорию /media/cdrom;</p>
+<p>/mnt — точка временного монтирования. Файловые системы подключаемых
+устройств обычно монтируются в этот каталог для временного
+использования;</p>
+<p>/opt — тут расположены дополнительные (необязательные) приложения.
+Такие программы обычно не подчиняются принятой иерархии и хранят свои
+файлы в одном подкаталоге (бинарные, библиотеки, конфигурации);</p>
+<p>/proc — содержит файлы, хранящие информацию о запущенных процессах и
+о состоянии ядра ОС;</p>
+<p>/root — директория, которая содержит файлы и личные настройки
+суперпользователя;</p>
+<p>/run — содержит файлы состояния приложений. Например, PID-файлы или
+UNIX-сокеты;</p>
+<p>/sbin — аналогично /bin содержит бинарные файлы. Утилиты нужны для
+настройки и администрирования системы суперпользователем;</p>
+<p>/srv — содержит файлы сервисов, предоставляемых сервером (прим. FTP
+или Apache HTTP);</p>
+<p>/sys — содержит данные непосредственно о системе. Тут можно узнать
+информацию о ядре, драйверах и устройствах;</p>
+<p>/tmp — содержит временные файлы. Данные файлы доступны всем
+пользователям на чтение и запись. Стоит отметить, что данный каталог
+очищается при перезагрузке;</p>
+<p>/usr — содержит пользовательские приложения и утилиты второго уровня,
+используемые пользователями, а</p>
+<p>не системой. Содержимое доступно только для чтения (кроме root).
+Каталог имеет вторичную иерархию и похож на корневой;</p>
+<p>/var — содержит переменные файлы. Имеет подкаталоги, отвечающие за
+отдельные переменные. Например, логи будут храниться в /var/log, кэш в
+/var/cache, очереди заданий в /var/spool/ и так далее.</p>
+<ol start="3" type="1">
+<li><p>Монтирование тома.</p></li>
+<li><p>Один блок адресуется несколькими mode (принадлежит нескольким
+файлам). Блок помечен как свободный, но в то же время занят (на него
+ссылается onode). Блок помечен как занятый, но в то же время свободен
+(ни один inode на него не ссылается). Неправильное число ссылок в inode
+(недостаток или избыток ссылающихся записей в каталогах). Несовпадение
+между размером файла и суммарным размером адресуемых inode блоков.
+Недопустимые адресуемые блоки (например, расположенные за пределами
+файловой системы). “Потерянные” файлы (правильные inode, на которые не
+ссылаются записи каталогов). Недопустимые или неразмещенные номера inode
+в записях каталогов.</p></li>
+<li><p>mkfs - позволяет создать файловую систему Linux.</p></li>
+<li><p>Cat - выводит содержимое файла на стандартное устройство вывода.
+Выполнение команды head выведет первые 10 строк текстового файла.
+Выполнение команды tail выведет последние 10 строк текстового файла.
+Команда tac - это тоже самое, что и cat, только отображает строки в
+обратном порядке. Для того, чтобы просмотреть огромный текстовый файл
+применяются команды для постраничного просмотра. Такие как more и
+less.</p></li>
+<li><p>Cp – копирует или перемещает директорию, файлы.</p></li>
+<li><p>Mv - переименовать или переместить файл или директорию</p></li>
+<li><p>Права доступа к файлу или каталогу можно изменить,
+воспользовавшись командой chmod. Сделать это может владелец файла (или
+каталога) или пользователь с правами администратора.</p></li>
+</ol>
